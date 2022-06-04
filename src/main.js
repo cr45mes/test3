@@ -4,8 +4,13 @@ import router from './router'
 import Elementplus from 'element-plus'
 import 'element-plus/dist/index.css'
 import request from './utils/requesr'
+import storage from './utils/storage'
+import api from './api'
+import store from './store'
 
 console.log('环境变量=>', import.meta.env)
 const app = createApp(App)
 app.config.globalProperties.$request = request
-app.use(router).use(Elementplus).mount('#app')
+app.config.globalProperties.$api = api
+app.config.globalProperties.$storage = storage
+app.use(router).use(store).use(Elementplus).mount('#app')
