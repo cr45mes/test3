@@ -1,6 +1,21 @@
 <script>
 export default {
   name: 'login',
+  mounted() {
+    this.$request({
+      method: 'get',
+      url: '/login',
+      data: {
+        name: 'jack'
+      }
+    }).then((res) => {
+      console.log(res)
+    })
+
+    // this.$requset.get('/login', { name: 'jack' }, { mock: true, loading: true }).then(() => {
+    //   console.log(res)
+    // })
+  },
   methods: {
     gohome() {
       this.$router.push('/welcome')
