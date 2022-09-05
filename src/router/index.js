@@ -18,6 +18,7 @@ const routes = [
         name: 'welcome',
         path: '/welcome',
         component: () => import('@/views/Welcome.vue'),
+
         meta: {
           title: '欢迎页'
         }
@@ -94,7 +95,7 @@ async function loadAsyncRoutes() {
       let routes = utils.generateRoute(menuList)
       routes.map((route) => {
         let url = `./../views/${route.component}.vue`
-        route.component = () => import(url)
+        route.component = () => import(url) //要把url提出去，不能直接放在里面，不然会报错
         router.addRoute('home', route)
       })
     } catch (error) {}
